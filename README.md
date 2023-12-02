@@ -2,6 +2,13 @@
 
 This is a firmware wich will turn ESP32 to a proxy device for listening a Roku TV in a Chrome browser tab on your PC (or MAC)
 
+Works in Chrome.
+
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=5ItckdX7aOM
+" target="_blank"><img src="http://img.youtube.com/vi/5ItckdX7aOM/sddefault.jpg" 
+alt="Roku Remote Control" width="400" height="300" /></a>
+
 
 ### ESPTool (burner)
 
