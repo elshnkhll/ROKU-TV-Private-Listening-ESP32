@@ -1,4 +1,4 @@
-## ROKU-TV-Private-Listening-ESP32
+## Roku TV Private Listening using ESP32 proxy.
 
 This is a firmware wich will turn ESP32 to a proxy device for listening a Roku TV on your PC (or MAC)
 
