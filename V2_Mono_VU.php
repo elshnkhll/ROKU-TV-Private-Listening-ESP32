@@ -52,61 +52,44 @@
 
 <script>
 
-	var tv_IP = "<?php echo $_GET['MyRokuTVIP']; ?>";
-
-	var ESP32_IP =  "<?php echo $_GET['MyESP32IP']; ?>";
+	var ws;
+	var player;
+	var worker = new Worker('workers/decoder.js');
+	var diff = 10;
+	
+	var tv_IP    = "<?php echo $_GET['MyRokuTVIP']; ?>";
+	var ESP32_IP = "<?php echo $_GET['MyESP32IP'];  ?>";
 
 	console.log('Roku TV IP: ' + tv_IP);
-
-
-	var player;
-	var diff = 0;
-
-	var init_msg = {type: 'init', config: {sampleRate: 48000, channels: 2}};
-
 	
-	var w_l = 3;
-	var workers = [];
-
-
-	async function do_handle_mssg(e) {
-				switch (e.data.type) {
-					case 'error' :
-						console.log('decoding error ' + e.data.error);
-						break;
-					case 'data' :
-						if( diff < 0 ) diff = 0;
-						if( diff > 4 ){
-							diff = diff - 2;
-							console.log( "=" );
-							break;
-						}
-						diff = diff - 1;
-						//*************************
-						player.feed(e.data.payload);
-						break;
-					default:
+	worker.onmessage = async function(e) {
+		switch (e.data.type) {
+			case 'error' :
+				console.log('decoding error ' + e.data.error);
+				break;
+			case 'data' :
+				if( diff > 11 ){
+					diff = diff - 2;
+					// console.log(  diff  );
+					break;
 				}
-	};
-	
-	
-	
-	for (var j = 0; j < 10; j++) {
-
-			var worker = new Worker('workers/decoder.js');
-			
-			workers.push(worker);
+				diff = diff - 1;
+				player.feed(e.data.payload);
 				
-			worker.onmessage = do_handle_mssg;
+				break;
+			default:
+		}
+	};
 
-			worker.postMessage( init_msg );
-			
-	}
+	worker.postMessage({
+		type: 'init',
+		config: {
+			sampleRate: 48000,
+			channels:   2
+		}
+	});
 
 	window.onclick = do_onclick;
-	
-	var crrnt_worker = 0;
-	var ws;
 	
 	function do_onclick() {
 	 
@@ -116,20 +99,13 @@
 		ws = new WebSocket('ws://' + ESP32_IP + ':881');
 		ws.binaryType = 'arraybuffer';
 		ws.onmessage = async function(event) {
+
 			var dt = new Uint8Array(event.data);
 			// console.log( dt );
-			//********************************
-			workers[crrnt_worker].postMessage({
+			worker.postMessage({
 				type: 'decode',
 				buffer: dt
 			});
-			crrnt_worker = crrnt_worker + 1;
-			if( crrnt_worker > 9) {
-				crrnt_worker = 0;
-			}
-				
-			
-			// console.log( crrnt_worker );
 			diff = diff + 1; 
 		};
         ws.onopen    = function(evt) { 
@@ -162,11 +138,10 @@
 		}; 
 		
 	}
-	
+
 
 	var skip = 0;
 	async function do_display_VU( c, vu ){
-		return;
 		// https://www.w3schools.com/charsets/ref_utf_geometric.asp
 		skip++;
 		if( skip < 5 ) return;
