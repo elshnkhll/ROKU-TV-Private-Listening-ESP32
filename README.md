@@ -16,7 +16,7 @@ You can connect ESP32 to the Wind PC using the USB data cable. If device driver 
 
 You can use this Serial Terminal to see serioal output of your ESP32, it is free: https://robocallz.com/TTY/
 
-### PLayer
+### Player
 
 After restarting ESP32 navigate to http://rokurc.com/PRVT_LSTN/V1_Mono_VU.php?MyRokuTVIP=#.#.#.# in Chrome, just replace #-s with your Roku TV IP address and enjoy.
 
