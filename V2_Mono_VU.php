@@ -54,7 +54,7 @@
 
 	var tv_IP = "<?php echo $_GET['MyRokuTVIP']; ?>";
 
-	var ESP32_IP = "192.168.2.47";
+	var ESP32_IP =  "<?php echo $_GET['MyESP32IP']; ?>";
 
 	console.log('Roku TV IP: ' + tv_IP);
 
