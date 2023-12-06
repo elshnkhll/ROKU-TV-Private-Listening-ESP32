@@ -28,5 +28,10 @@ You can use this Serial Terminal to see serioal output of your ESP32, it is free
 After restarting ESP32 you can use PHP code for the player web interface or just use one provided on my domain: 
 navigate to http://RokuRC.com/PRVT_LSTN/V1_Mono_VU.php?MyESP32IP=192.168.2.47&MyRokuTVIP=#.#.#.# in Chrome, just replace #-s with your Roku TV IP address and enjoy.
 
+#### Spesial Thanks
+to samirkumardas for his amazing wasm decoder https://github.com/samirkumardas/another-libopus.js/blob/master/dist/decoder.js
+
+
+
 
 [<img width="64px" src="https://www.robocallz.com/app75/images/recorder_icon_150x150.png">](https://robocallz.com)
