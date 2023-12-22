@@ -26,7 +26,7 @@ You can use this Serial Terminal to see serial output of your ESP32, it is free:
 ### Player
 
 After restarting ESP32 you can use PHP code for the player web interface or just use one provided on my domain: 
-navigate to http://RokuRC.com/PRVT_LSTN/V1_Mono_VU.php?MyESP32IP=192.168.2.47&MyRokuTVIP=#.#.#.# in Chrome, just replace #-s with your Roku TV IP address and enjoy.
+navigate to http://RokuRC.com/PRVT_LSTN/V3.php?MyRokuTVIP=#.#.#.# in Chrome, just replace #-s with your Roku TV IP address and enjoy.
 
 #### Spesial Thanks
 to samirkumardas for his amazing Wasm Opus Decoder https://github.com/samirkumardas/another-libopus.js/blob/master/dist/decoder.js and JS PCM Player https://github.com/samirkumardas/pcm-player
