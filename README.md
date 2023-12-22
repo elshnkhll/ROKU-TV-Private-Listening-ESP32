@@ -21,7 +21,7 @@ You can connect ESP32 to the Wind PC using the USB data cable. If device driver 
 
 ### Terminal 
 
-You can use this Serial Terminal to see serioal output of your ESP32, it is free: https://robocallz.com/TTY/
+You can use this Serial Terminal to see serial output of your ESP32, it is free: https://robocallz.com/TTY/
 
 ### Player
 
