@@ -1,6 +1,6 @@
 ## Roku TV Private Listening using ESP32 proxy.
 
-This is a firmware wich will turn ESP32 to a proxy device for listening a Roku TV in a Chrome browser tab on your PC (or MAC)
+This is a firmware wich will turn ESP32 to a proxy device for listening a Roku TV in a Chrome browser tab on your PC (or MAC). Don't forget to replace port name in the upload script.
 
 Works in Chrome.
 
